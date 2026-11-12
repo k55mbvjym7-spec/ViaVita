@@ -287,22 +287,48 @@
                     </div>
                 </div>
 
-                <form class="contact-form" id="contact-form">
-                    <label for="name">Имя</label>
-                    <input type="text" id="name" placeholder="Как вас зовут?" required>
+               <form
+    class="contact-form"
+    id="contact-form"
+    action="https://formsubmit.co/vladislava.buyskikh@mail.ru"
+    method="POST"
+>
+    <input type="hidden" name="_subject" value="Новая заявка ViaVita">
+    <input type="hidden" name="_captcha" value="true">
 
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" placeholder="you@mail.ru" required>
+    <label for="name">Имя</label>
+    <input
+        type="text"
+        id="name"
+        name="Имя"
+        placeholder="Как вас зовут?"
+        required
+    >
 
-                    <label for="message">Сообщение</label>
-                    <textarea id="message" rows="4" placeholder="Ваше сообщение..." required></textarea>
+    <label for="email">E-mail</label>
+    <input
+        type="email"
+        id="email"
+        name="Email"
+        placeholder="you@mail.ru"
+        required
+    >
 
-                    <button type="submit" class="button button-primary">
-                        Отправить заявку →
-                    </button>
+    <label for="message">Сообщение</label>
+    <textarea
+        id="message"
+        name="Сообщение"
+        rows="4"
+        placeholder="Ваше сообщение..."
+        required
+    ></textarea>
 
-                    <p class="form-message" id="form-message"></p>
-                </form>
+    <button type="submit" class="button button-primary">
+        Отправить заявку →
+    </button>
+
+    <p class="form-message" id="form-message"></p>
+</form>
             </div>
         </section>
 
