@@ -63,7 +63,7 @@ if (contactForm) {
 
         try {
             const response = await fetch(
-                'https://formsubmit.co/ajax/vladislava.buyskikh@mail.ru',
+                'https://formsubmit.co/d0f4da3bfff9ca8544cfd1566cedf3f5',
                 {
                     method: 'POST',
                     headers: {
