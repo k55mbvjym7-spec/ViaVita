@@ -46,17 +46,17 @@ backToTop.addEventListener('click', () => {
 
 
 // =============================
-// ДЕМОНСТРАЦИОННАЯ ФОРМА
+// ОТПРАВКА ЗАЯВОК VIA VITA
 // =============================
 
 const contactForm = document.getElementById('contact-form');
-const formMessage = document.getElementById('form-message');
 
-contactForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener('submit', () => {
+        const formMessage = document.getElementById('form-message');
 
-    formMessage.textContent =
-        'Спасибо! Форма работает в демонстрационном режиме. Для отправки заявок нужно подключить сервис приёма сообщений.';
-
-    contactForm.reset();
-});
+        if (formMessage) {
+            formMessage.textContent = 'Отправляем вашу заявку...';
+        }
+    });
+}
