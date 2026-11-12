@@ -45,18 +45,50 @@ backToTop.addEventListener('click', () => {
 });
 
 
-// =============================
-// ОТПРАВКА ЗАЯВОК VIA VITA
-// =============================
-
 const contactForm = document.getElementById('contact-form');
+const formMessage = document.getElementById('form-message');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', () => {
-        const formMessage = document.getElementById('form-message');
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-        if (formMessage) {
-            formMessage.textContent = 'Отправляем вашу заявку...';
+        formMessage.textContent = 'Отправляем вашу заявку...';
+
+        const formData = {
+            name: contactForm.querySelector('#name').value,
+            email: contactForm.querySelector('#email').value,
+            message: contactForm.querySelector('#message').value,
+            _subject: 'Новая заявка ViaVita'
+        };
+
+        try {
+            const response = await fetch(
+                'https://formsubmit.co/ajax/vladislava.buyskikh@mail.ru',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                }
+            );
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                formMessage.textContent =
+                    'Спасибо! Ваша заявка успешно отправлена';
+
+                contactForm.reset();
+            } else {
+                formMessage.textContent =
+                    'Не удалось отправить заявку. Попробуйте ещё раз.';
+            }
+
+        } catch (error) {
+            formMessage.textContent =
+                'Ошибка соединения. Попробуйте немного позже.';
         }
     });
 }
